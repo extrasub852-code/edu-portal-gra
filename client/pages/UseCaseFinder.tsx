@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Filters, FiltersSidebar } from "@/components/FiltersSidebar";
 import { UseCaseCard } from "@/components/UseCaseCard";
 import { AIToolCard } from "@/components/AIToolCard";
