@@ -25,15 +25,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout><Index /></Layout>} path="/" />
-          <Route element={<Layout><Courses /></Layout>} path="/courses" />
-          <Route element={<Layout><About /></Layout>} path="/about" />
-          <Route element={<Layout><Contact /></Layout>} path="/contact" />
-          <Route element={<Layout><UseCaseFinder /></Layout>} path="/use-case-finder" />
-          <Route element={<Layout><Login /></Layout>} path="/login" />
-          <Route element={<Layout><Signup /></Layout>} path="/signup" />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<Layout><NotFound /></Layout>} />
+          <Route element={<Layout />}>
+            <Route index element={<Index />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/use-case-finder" element={<UseCaseFinder />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
