@@ -17,6 +17,14 @@ export default function UseCaseFinder() {
     categories: [],
   });
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("category");
+    if (cat && categories.includes(cat) && !selected.includes(cat)) {
+      setSelected((prev) => [...prev, cat]);
+    }
+  }, []);
+
   const availableCategories = categories;
 
   const filteredUseCases = useMemo(() => {
