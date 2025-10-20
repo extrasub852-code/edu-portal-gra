@@ -1,0 +1,62 @@
+[
+  {
+    "id": "sol-1",
+    "title": "Customer Support Chatbot",
+    "description": "Multichannel AI assistant for handling FAQs, routing, and intent detection.",
+    "author": "Acme AI",
+    "category": "Customer Support",
+    "tags": ["chatbot", "faq", "routing", "intent", "nlp", "customer-service"],
+    "rating": 4.7,
+    "popularity": 1320,
+    "dateAdded": "2025-01-15T00:00:00.000Z",
+    "link": "https://example.com/solutions/support-chatbot"
+  },
+  {
+    "id": "sol-2",
+    "title": "Sales Email Personalization",
+    "description": "Generate tailored outreach emails using CRM signals and product catalogs.",
+    "author": "SalesGenius",
+    "category": "Sales",
+    "tags": ["email", "personalization", "crm", "generation", "copywriting", "outreach"],
+    "rating": 4.6,
+    "popularity": 980,
+    "dateAdded": "2024-12-03T00:00:00.000Z",
+    "link": "https://example.com/solutions/sales-email-personalization"
+  },
+  {
+    "id": "sol-3",
+    "title": "Document Summarization Pipeline",
+    "description": "Ingest PDFs and long reports, chunk them, and generate concise summaries.",
+    "author": "SummarizePro",
+    "category": "Knowledge Management",
+    "tags": ["summarization", "rag", "pdf", "chunking", "embedding", "retrieval"],
+    "rating": 4.8,
+    "popularity": 1560,
+    "dateAdded": "2025-02-22T00:00:00.000Z",
+    "link": "https://example.com/solutions/document-summarization"
+  },
+  {
+    "id": "sol-4",
+    "title": "MLOps Monitoring Dashboard",
+    "description": "Track drift, latency, and model quality with alerts and lineage.",
+    "author": "OpsVision",
+    "category": "MLOps",
+    "tags": ["monitoring", "drift", "latency", "quality", "alerts", "lineage"],
+    "rating": 4.5,
+    "popularity": 870,
+    "dateAdded": "2024-09-14T00:00:00.000Z",
+    "link": "https://example.com/solutions/mlops-monitoring"
+  },
+  {
+    "id": "sol-5",
+    "title": "Content Moderation Service",
+    "description": "Real-time toxicity, PII, and policy checks for user-generated content.",
+    "author": "ShieldAI",
+    "category": "Trust & Safety",
+    "tags": ["moderation", "toxicity", "pii", "policy", "realtime", "screening"],
+    "rating": 4.4,
+    "popularity": 740,
+    "dateAdded": "2024-10-05T00:00:00.000Z",
+    "link": "https://example.com/solutions/content-moderation"
+  }
+]
