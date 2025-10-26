@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { listSolutions, searchSolutions } from "./routes/solutions";
 
 export function createServer() {
   const app = express();
@@ -18,6 +19,11 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // Use Case Finder routes
+  app.get("/api/solutions", listSolutions);
+  app.get("/api/solutions/search", searchSolutions);
+  app.post("/api/solutions/search", searchSolutions);
 
   return app;
 }

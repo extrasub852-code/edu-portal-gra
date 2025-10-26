@@ -5,11 +5,13 @@ import { AIToolCard } from "@/components/AIToolCard";
 import { useCases, categories } from "@/data/useCases";
 import { aiTools } from "@/data/aiTools";
 import { Search } from "lucide-react";
+import type { SearchResponse } from "@shared/api";
 
 export default function UseCaseFinder() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<SearchResponse | null>(null);
   const [filters, setFilters] = useState<Filters>({
     sortBy: "popular",
     showCommunity: true,
@@ -52,13 +54,37 @@ export default function UseCaseFinder() {
     return list;
   }, [query, selected, filters]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => setLoading(false), 600);
+    try {
+      const params = new URLSearchParams();
+      params.set("q", query);
+      const cats = Array.from(new Set([...(filters.categories || []), ...selected]));
+      if (cats.length) {
+        // pass categories via body on POST, but also include hint in query for GET fallback
+        params.set("categories", cats.join(","));
+      }
+
+      // Prefer POST with JSON body; fallback to GET if needed
+      const resp = await fetch(`/api/solutions/search`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, categories: cats }),
+      });
+      if (!resp.ok) throw new Error("Search failed");
+      const data: SearchResponse = await resp.json();
+      setResults(data);
+    } catch (err) {
+      console.error(err);
+      setResults(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const showCommunity = filters.showCommunity && filteredUseCases.length > 0;
+  const communityList = results?.results?.length ? results.results : filteredUseCases;
+  const showCommunity = filters.showCommunity && communityList.length > 0;
   const showTools = filters.showTools && !showCommunity;
 
   return (
@@ -155,7 +181,7 @@ export default function UseCaseFinder() {
                       </p>
                     </header>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                      {filteredUseCases.map((uc) => (
+                      {communityList.map((uc: any) => (
                         <UseCaseCard key={uc.id} useCase={uc} />
                       ))}
                     </div>
